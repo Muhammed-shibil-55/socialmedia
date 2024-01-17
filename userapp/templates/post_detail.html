@@ -25,11 +25,13 @@
           <p class="card-text text-light">{{data.created_date|date}}</p>
           <div class="card-text">
 
+            {%if request.user.profile%}
             {%if data in request.user.profile.liked_posts.all%}
             
-              <a href="{%url 'likes-remove' data.id%}"><i class="fa-solid fa-heart fa-lg" style="color: #ff0000;"></i></a>
+            <a href="{%url 'likes-remove' data.id%}"><i class="fa-solid fa-heart fa-lg" style="color: #ff0000;"></i></a>
             {%else%}
-              <a href="{%url 'post-like' data.id%}"><i class="fa-regular fa-heart fa-lg" style="color: #ffffff;"></i></a>
+            <a href="{%url 'post-like' data.id%}"><i class="fa-regular fa-heart fa-lg" style="color: #ffffff;"></i></a>
+            {%endif%}
             {%endif%}
 
             <a href="{%url 'comment-add' data.id%}"><i class="fa-regular fa-comment fa-lg ms-2" style="color: #ffffff;"></i></a>

@@ -4,7 +4,7 @@ from django.db.models.query import QuerySet
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
-from django.views.generic import View,FormView,DetailView,UpdateView,ListView,CreateView
+from django.views.generic import View,FormView,DetailView,UpdateView,ListView,CreateView,TemplateView
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from userapp.forms import SignUpForm,SignInForm,UserProfileForm,PostForm,UserSearchForm,CommentForm
@@ -44,7 +44,7 @@ class SignInView(FormView):
             if user_obj:
                 login(request,user_obj)
                 print("session started")
-                return redirect("index")
+                return redirect("home")
             else:
                 print("login failed")
                 return render(request,"signin.html",{"form":form})
@@ -200,8 +200,9 @@ class IndexView(View):
         qs=Posts.objects.filter(user__in=followings).order_by("-created_date")
         return render(request,"index.html",{"post":qs})
 
-    
-
+@method_decorator(SigninRequired,name="dispatch")    
+class HomeView(TemplateView):
+    template_name="home.html"
     
 
 

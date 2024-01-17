@@ -3,16 +3,22 @@
 {%block bodyblock%}
 
 <div class="container bg-dark mt-2">
+
+    
     {%if data%}
-        {%for d in data%}
-        <div class="card border-0 bg-dark text-light" style="width: 100%;">
-            {%if d.profile_picture%}
-            <img src="{{d.profile_picture.url}}" class="card-img-top rounded-circle ms-auto me-auto mt-3" alt="..." style="width: 20%; height: 220px;">
+    {%for d in data%}
+    <div class="card mb-3 border-0 bg-dark text-light" style="width: 100%;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          {%if d.profile_picture%}
+            <img src="{{d.profile_picture.url}}" class="card-img-top rounded-circle ms-auto me-auto mt-3" alt="..." style="width: 85%; height: 305px;">
             {%else%}
-            <div class="card-img-top rounded-circle bg-secondary ms-auto me-auto" style="width: 20%; height: 200px;"></div>
+            <div class="card-img-top rounded-circle bg-secondary ms-auto me-auto" style="width: 85%; height: 300px;"></div>
             {%endif%}
-            <div class="card-body ms-auto me-auto text-center">
-              <h5 class="card-title">{{d.user.username}}</h5>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body mt-4">
+            <h3 class="card-title">{{d.user.username}}</h3>
               <div class="card-text mt-1">{{d.bio}}</div>
               <div class="card-text mt-1">{{d.user.first_name}} {{d.user.last_name}}</div>
               <div class="card-text mt-1">{{d.dob}}</div>
@@ -24,9 +30,9 @@
                 </div>
                 <div class="dropdown ">
                   <button class="btn btn-dark dropdown-toggle mt-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    following
+                    {{following|length}} following
                   </button>
-                  <ul class="dropdown-menu bg-dark">
+                  <ul class="dropdown-menu bg-dark overflow-y-scroll" style="height: 90px;">
                     {%if following%}
                     {%for follow in following%}
                     <li><a class="dropdown-item text-light link-dark" href="{%url 'user-detail' follow.id%}">{{follow.username}}</a></li>
@@ -39,9 +45,9 @@
                 </div>
                 <div class=" ms-2 dropdown ">
                   <button class="btn btn-dark dropdown-toggle mt-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    followers
+                    {{followers|length}} followers
                   </button>
-                  <ul class="dropdown-menu bg-dark">
+                  <ul class="dropdown-menu bg-dark overflow-y-scroll" style="height: 90px;">
                     {%if followers%}
                     {%for follow in followers%}
                     <li><a class="dropdown-item text-light link-dark" href="{%url 'user-detail' follow.id%}">{{follow.username}}</a></li>
@@ -57,12 +63,14 @@
               <a href="{%url 'profile-change' d.id%}" class="btn btn-primary">Edit profile</a>
               <a href="{%url 'post-add'%}" class="btn btn-primary rounded ms-2">add post</a>
               
-            </div>
+          </div>
         </div>
-      {%endfor%}
+      </div>
+    </div>
+    {%endfor%}
       {%else%}
       <a href="{%url 'profile-add' %}" class="btn btn-primary rounded">Add profile</a>
-    {%endif%}
+    {%endif%} 
     
 </div>
 <div class="sticky-top bg-dark">

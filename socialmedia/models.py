@@ -21,8 +21,8 @@ class UserProfile(models.Model):
     phone=models.CharField(max_length=10)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
     liked_posts=models.ManyToManyField(Posts,null=True,related_name="liked_post")
-    following=models.ManyToManyField(User,related_name="following")
-    followers=models.ManyToManyField(User,related_name="followers")
+    following=models.ManyToManyField(User,related_name="following",null=True)
+    followers=models.ManyToManyField(User,related_name="followers",null=True)
 
     def __str__(self) -> str:
         return self.user.username
