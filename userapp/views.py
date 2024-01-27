@@ -44,7 +44,7 @@ class SignInView(FormView):
             if user_obj:
                 login(request,user_obj)
                 print("session started")
-                return redirect("home")
+                return redirect("index")
             else:
                 print("login failed")
                 return render(request,"signin.html",{"form":form})
@@ -57,16 +57,6 @@ class SignoutView(View):
         print("session ended")
         return redirect("signin")
 
-@method_decorator(SigninRequired,name="dispatch")    
-class ProfileCreateView(CreateView):
-    template_name="user-profile.html"
-    form_class=UserProfileForm
-    model=UserProfile
-    success_url=reverse_lazy("profile")
-
-    def form_valid(self, form):
-        form.instance.user=self.request.user
-        return super().form_valid(form)
 
     
 @method_decorator(SigninRequired,name="dispatch")        

@@ -16,6 +16,11 @@
                 {%if data%}
                 {%for d in data%}
                 <div class="mb-1">
+                    {%if d.profile.profile_picture%}
+                    <img src="{{d.profile.profile_picture.url}}" alt="" class="rounded-circle" style="height: 50px; width: 50px;">
+                    
+                    
+                    {%endif%}
                     <a href="{%url 'user-detail' d.id%}" class="text-light text-decoration-none fs-6">{{d.username}}</a>
                 </div>
                 {%endfor%}

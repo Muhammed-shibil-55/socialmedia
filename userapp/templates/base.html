@@ -44,9 +44,6 @@
           </li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="{%url 'home'%}">Home</a>
-          </li>
           {%if request.user.profile%}
           <li class="nav-item">
             <a class="nav-link active text-light" aria-current="page" href="{%url 'index'%}">Explore</a>

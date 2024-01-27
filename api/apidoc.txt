@@ -1,0 +1,72 @@
+1.api for registering a new user
+=================================
+   
+    url:http://127.0.0.1:8000/api/register/
+    method:post
+    data:{first name,last name,username,email,password}
+    authorization:nill
+
+2.api for token
+==========================
+   
+    url:http://127.0.0.1:8000/api/token/
+    method:post
+    data:{username,password}
+    authorization:nill
+
+3.api for profile list
+=========================
+   
+    url:http://127.0.0.1:8000/api/profile/
+    method:get
+    data:nill
+    authorization: token
+
+
+4.api for profile update
+=============================
+    url:http://127.0.0.1:8000/profile/id/
+    method:put
+    data:{profile picture , bio , date of birth, phone}
+    authorization: token
+
+5.api for add post
+=====================
+   
+    url:http://127.0.0.1:8000/api/posts/
+    method:post
+    data:{title,post image}
+    authorization:token
+
+6.api for post list
+======================= 
+    url:http://127.0.0.1:8000/api/posts/
+    method:get
+    data:nill
+    authorization:token
+
+7.api for post detail
+ ========================  
+    url:http://127.0.0.1:8000/api/posts/{id}/
+    method:get
+    data:nill
+    authorization:token
+
+8.api for post update
+========================   
+    url:http://127.0.0.1:8000/api/posts/{id}/
+    method:put
+    data:{title}
+    authorization:token
+
+9.api for post delete
+=========================   
+    url:http://127.0.0.1:8000/api/posts/{id}
+    method:delete
+    data:nill
+    authorization:token
+
+
+
+
+

@@ -6,7 +6,6 @@ urlpatterns= [
     path("signup/",views.SignUpView.as_view(),name="signup"),
     path("",views.SignInView.as_view(),name="signin"),
     path("signout/",views.SignoutView.as_view(),name="signout"),
-    path("profile/add/",views.ProfileCreateView.as_view(),name="profile-add"),
     path("profile/",views.ProfileListView.as_view(),name="profile"),
     path("profile/<int:pk>/change/",views.ProfileUpdateView.as_view(),name="profile-change"),
     path("post-add/",views.PostCreateView.as_view(),name="post-add"),
@@ -20,5 +19,5 @@ urlpatterns= [
     path("user/<int:pk>/follow/",views.FollowView.as_view(),name="follow"),
     path("user/<int:pk>/unfollow/",views.UnFollowView.as_view(),name="unfollow"),
     path("index/",views.IndexView.as_view(),name="index"),
-    path("home/",views.HomeView.as_view(),name="home"),
+    
 ]
